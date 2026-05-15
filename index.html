@@ -1467,18 +1467,20 @@
 
       <!-- Expanded Work Detail -->
       <div class="work-expanded" id="workExpanded">
-        <div class="work-expanded-inner">
-          <div class="work-expanded-header">
-            <div>
-              <h3 class="work-expanded-title" id="expandedTitle"></h3>
-              <p class="work-expanded-cat" id="expandedCategory"></p>
+        <div class="work-expanded-inner" style="padding:1rem 1.25rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
+            <div style="display:flex;align-items:center;gap:0.75rem">
+              <div class="work-card-bottom-dot" id="expandedDot"></div>
+              <div>
+                <h3 class="work-expanded-title" id="expandedTitle" style="font-size:1.125rem"></h3>
+                <p class="work-expanded-cat" id="expandedCategory" style="font-size:0.55rem"></p>
+              </div>
             </div>
-            <button class="work-expanded-close" id="expandedClose" aria-label="Close">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <button class="work-expanded-close" id="expandedClose" aria-label="Close" style="width:28px;height:28px">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="work-expanded-media" id="expandedMedia"></div>
-          <p class="work-expanded-desc" id="expandedDesc"></p>
         </div>
       </div>
     </div>
@@ -1900,7 +1902,7 @@
     const expandedTitle = document.getElementById('expandedTitle');
     const expandedCategory = document.getElementById('expandedCategory');
     const expandedMedia = document.getElementById('expandedMedia');
-    const expandedDesc = document.getElementById('expandedDesc');
+    const expandedDot = document.getElementById('expandedDot');
     const expandedClose = document.getElementById('expandedClose');
     let expandedId = null;
 
@@ -1931,7 +1933,11 @@
         
         expandedId = id;
         expandedTitle.textContent = card.dataset.title;
-        expandedCategory.textContent = card.dataset.category;
+        expandedCategory.textContent = card.dataset.category.toUpperCase();
+        
+        // Set dot color based on card
+        const colors = {'0':'#00FF88','1':'#8B9E7C','2':'#C4A35A','3':'#00FF88','4':'#8B9E7C','5':'#C4A35A'};
+        expandedDot.style.backgroundColor = colors[id] || '#8B9E7C';
         
         const type = card.dataset.type;
         const src = card.dataset.src;
@@ -1941,8 +1947,6 @@
         } else {
           expandedMedia.innerHTML = `<img src="${src}" alt="${card.dataset.title}" style="width:100%;height:100%;object-fit:cover">`;
         }
-        
-        expandedDesc.innerHTML = `This is a placeholder description for <strong>${card.dataset.title}</strong>. Replace this with your project description — the process, tools used, and the creative vision behind this work.`;
         
         workExpanded.classList.add('open');
         
