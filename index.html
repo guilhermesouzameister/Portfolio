@@ -1411,9 +1411,9 @@
         </div>
 
         <!-- Work 4 -->
-        <div class="work-card reveal" style="transition-delay:400ms" data-work-id="4" data-title="Bio Lab" data-category="3D Modeling / Concept" data-type="video" data-src="works/work-4.mp4">
+        <div class="work-card reveal" style="transition-delay:400ms" data-work-id="4" data-title="Bio Lab" data-category="3D Modeling / Concept" data-type="image" data-src="works/work-4.png">
           <div class="work-card-media">
-            <video src="works/work-4.mp4" alt="Bio Lab" loading="lazy" autoplay loop muted playsinline>
+            <img src="works/work-4.png" alt="Bio Lab" loading="lazy">
             <div class="work-card-overlay"></div>
             <div class="work-card-badge" style="background:rgba(139,158,124,0.19)">IMAGE</div>
             <div class="work-card-expand">
@@ -1438,9 +1438,9 @@
         </div>
 
         <!-- Work 5 -->
-        <div class="work-card reveal" style="transition-delay:500ms" data-work-id="5" data-title="Drift" data-category="Visual Design / Concept Art" data-type="video" data-src="works/work-5.mp4">
+        <div class="work-card reveal" style="transition-delay:500ms" data-work-id="5" data-title="Drift" data-category="Visual Design / Concept Art" data-type="image" data-src="works/work-5.png">
           <div class="work-card-media">
-            <video src="works/work-5.mp4" alt="Drift" loading="lazy" autoplay loop muted playsinline>
+            <img src="works/work-5.png" alt="Drift" loading="lazy">
             <div class="work-card-overlay"></div>
             <div class="work-card-badge" style="background:rgba(196,163,90,0.19)">IMAGE</div>
             <div class="work-card-expand">
@@ -1736,15 +1736,103 @@
       });
     });
 
-    // ===== THREE.JS GLB VIEWER =====
-    (async function() {
-      const canvas = document.getElementById('glbCanvas');
-      if (!canvas) return;
+    // ===== WORK CARDS =====
+    const workCards = document.querySelectorAll('.work-card');
+    const workExpanded = document.getElementById('workExpanded');
+    const expandedTitle = document.getElementById('expandedTitle');
+    const expandedCategory = document.getElementById('expandedCategory');
+    const expandedMedia = document.getElementById('expandedMedia');
+    const expandedDot = document.getElementById('expandedDot');
+    const expandedClose = document.getElementById('expandedClose');
+    let expandedId = null;
 
-      const THREE = await import('https://unpkg.com/three@0.170.0/build/three.module.js');
-      const { OrbitControls } = await import('https://unpkg.com/three@0.170.0/examples/jsm/controls/OrbitControls.js');
-      const { GLTFLoader } = await import('https://unpkg.com/three@0.170.0/examples/jsm/loaders/GLTFLoader.js');
+    workCards.forEach(card => {
+      // 3D tilt effect
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      });
 
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+
+      // Click to expand
+      card.addEventListener('click', () => {
+        const id = card.dataset.workId;
+        if (expandedId === id) {
+          closeExpanded();
+          return;
+        }
+        
+        expandedId = id;
+        expandedTitle.textContent = card.dataset.title;
+        expandedCategory.textContent = card.dataset.category.toUpperCase();
+        
+        // Set dot color based on card
+        const colors = {'0':'#00FF88','1':'#8B9E7C','2':'#C4A35A','3':'#00FF88','4':'#8B9E7C','5':'#C4A35A'};
+        expandedDot.style.backgroundColor = colors[id] || '#8B9E7C';
+        
+        const type = card.dataset.type;
+        const src = card.dataset.src;
+        
+        if (type === 'video') {
+          expandedMedia.innerHTML = `<video src="${src}" controls style="width:100%;height:100%;object-fit:cover"></video>`;
+        } else {
+          expandedMedia.innerHTML = `<img src="${src}" alt="${card.dataset.title}" style="width:100%;height:100%;object-fit:cover">`;
+        }
+        
+        workExpanded.classList.add('open');
+        
+        setTimeout(() => {
+          workExpanded.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      });
+    });
+
+    expandedClose.addEventListener('click', closeExpanded);
+
+    function closeExpanded() {
+      expandedId = null;
+      workExpanded.classList.remove('open');
+    }
+
+    // ===== SCROLL REVEAL =====
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '-80px' });
+
+    revealElements.forEach(el => observer.observe(el));
+
+
+
+    // ===== NAV LOGO TEXT SHOW ON WIDER SCREENS =====
+    const logoText = document.querySelector('.nav-logo-text');
+    if (logoText && window.matchMedia('(min-width: 640px)').matches) {
+      logoText.style.display = 'block';
+    }
+  </script>
+
+  <!-- Three.js Module Script -->
+  <script type="module">
+    import * as THREE from 'https://unpkg.com/three@0.170.0/build/three.module.js';
+    import { OrbitControls } from 'https://unpkg.com/three@0.170.0/examples/jsm/controls/OrbitControls.js';
+    import { GLTFLoader } from 'https://unpkg.com/three@0.170.0/examples/jsm/loaders/GLTFLoader.js';
+
+    const canvas = document.getElementById('glbCanvas');
+    if (canvas) {
       const container = canvas.parentElement;
       const width = container.clientWidth;
       const height = container.clientHeight || width * 0.75;
@@ -1781,7 +1869,7 @@
       let model = null;
       const originalMaterials = new Map();
       let wireframeMeshes = [];
-      let wireframeMode = 'off'; // off, overlay, solid
+      let wireframeMode = 'off';
 
       const loader = new GLTFLoader();
       loader.load(
@@ -1894,94 +1982,6 @@
         document.getElementById('rotateIcon').setAttribute('stroke', autoRot ? 'var(--bio-green)' : 'var(--muted-foreground)');
         document.getElementById('rotateLabel').textContent = autoRot ? 'ROTATE: ON' : 'ROTATE: OFF';
       });
-    })();
-
-    // ===== WORK CARDS =====
-    const workCards = document.querySelectorAll('.work-card');
-    const workExpanded = document.getElementById('workExpanded');
-    const expandedTitle = document.getElementById('expandedTitle');
-    const expandedCategory = document.getElementById('expandedCategory');
-    const expandedMedia = document.getElementById('expandedMedia');
-    const expandedDot = document.getElementById('expandedDot');
-    const expandedClose = document.getElementById('expandedClose');
-    let expandedId = null;
-
-    workCards.forEach(card => {
-      // 3D tilt effect
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -5;
-        const rotateY = ((x - centerX) / centerX) * 5;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-
-      // Click to expand
-      card.addEventListener('click', () => {
-        const id = card.dataset.workId;
-        if (expandedId === id) {
-          closeExpanded();
-          return;
-        }
-        
-        expandedId = id;
-        expandedTitle.textContent = card.dataset.title;
-        expandedCategory.textContent = card.dataset.category.toUpperCase();
-        
-        // Set dot color based on card
-        const colors = {'0':'#00FF88','1':'#8B9E7C','2':'#C4A35A','3':'#00FF88','4':'#8B9E7C','5':'#C4A35A'};
-        expandedDot.style.backgroundColor = colors[id] || '#8B9E7C';
-        
-        const type = card.dataset.type;
-        const src = card.dataset.src;
-        
-        if (type === 'video') {
-          expandedMedia.innerHTML = `<video src="${src}" controls style="width:100%;height:100%;object-fit:cover"></video>`;
-        } else {
-          expandedMedia.innerHTML = `<img src="${src}" alt="${card.dataset.title}" style="width:100%;height:100%;object-fit:cover">`;
-        }
-        
-        workExpanded.classList.add('open');
-        
-        setTimeout(() => {
-          workExpanded.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 100);
-      });
-    });
-
-    expandedClose.addEventListener('click', closeExpanded);
-
-    function closeExpanded() {
-      expandedId = null;
-      workExpanded.classList.remove('open');
-    }
-
-    // ===== SCROLL REVEAL =====
-    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '-80px' });
-
-    revealElements.forEach(el => observer.observe(el));
-
-
-
-    // ===== NAV LOGO TEXT SHOW ON WIDER SCREENS =====
-    const logoText = document.querySelector('.nav-logo-text');
-    if (logoText && window.matchMedia('(min-width: 640px)').matches) {
-      logoText.style.display = 'block';
     }
   </script>
 </body>
