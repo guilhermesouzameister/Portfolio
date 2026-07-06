@@ -139,7 +139,7 @@
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════════
-       SHOWCASE — THREE VIDEO PIECES
+       3D SHOWCASE — THREE INTERACTIVE VIEWERS
        ═══════════════════════════════════════════════════════════════ -->
   <section class="section showcase-section" id="showcase">
     <div class="section-frame">
@@ -155,7 +155,7 @@
         </h2>
         <div class="heading-sub-line" aria-hidden="true"></div>
         <p class="showcase-intro">
-          Three exemplary works, presented as motion studies. Each piece captures the bottle in its full cinematic context&mdash;light, liquid, and material behaving exactly as they would in the studio, preserved as a film for repeated viewing.
+          Three exemplary works, presented as interactive 3D models. Each piece may be rotated, zoomed, and examined from every angle&mdash;a privilege once reserved for those who held the physical object.
         </p>
 
         <!-- ─── MODEL 1 ─── -->
@@ -170,16 +170,16 @@
           <div class="model-description">
             <p>A photorealistic study of a premium tonic water bottle rendered in Blender Cycles, capturing the delicate interplay of glass refraction, effervescent carbonation, and the warm amber glow of studio lighting. The label design draws upon Victorian typographic traditions, with serif letterforms and ornamental borders that evoke the heritage of botanical tonics first crafted in the apothecaries of Georgian London. Every droplet of condensation on the glass surface has been individually placed and physically simulated to achieve maximum realism.</p>
           </div>
-          <div class="model-viewer-container" data-slot="1">
+          <div class="model-viewer-container">
             <div class="model-frame-ornament" aria-hidden="true">
               <div class="frame-corner fc-tl"></div>
               <div class="frame-corner fc-tr"></div>
               <div class="frame-corner fc-bl"></div>
               <div class="frame-corner fc-br"></div>
             </div>
-            <video class="model-video" id="video-1" src="videos/video-1.mp4" muted loop autoplay playsinline preload="metadata"></video>
+            <canvas class="model-canvas" id="canvas-1" data-model="models/model-1.glb"></canvas>
             <div class="viewer-controls" aria-hidden="true">
-              <span class="control-hint">&#9788; Motion Study &middot; Autoplay Loop</span>
+              <span class="control-hint">&#9788; Drag to Rotate &middot; Scroll to Zoom</span>
             </div>
           </div>
         </div>
@@ -202,16 +202,16 @@
           <div class="model-description">
             <p>An exploration of organic elegance&mdash;a slender, flute-style bottle designed for a premium botanical sparkling water. This piece showcases the studio&rsquo;s ability to render complex transparent materials with physically accurate caustics and internal light dispersion. The bottle&rsquo;s form draws inspiration from the elongated glassware of the Belle &Eacute;poque, while the minimalist label treatment grounds it firmly in contemporary luxury. Fine bubbles rise through the liquid in a simulation that mirrors the natural effervescence of a freshly opened bottle, captured at the precise moment of peak visual delight.</p>
           </div>
-          <div class="model-viewer-container" data-slot="2">
+          <div class="model-viewer-container">
             <div class="model-frame-ornament" aria-hidden="true">
               <div class="frame-corner fc-tl"></div>
               <div class="frame-corner fc-tr"></div>
               <div class="frame-corner fc-bl"></div>
               <div class="frame-corner fc-br"></div>
             </div>
-            <video class="model-video" id="video-2" src="videos/video-2.mp4" muted loop autoplay playsinline preload="metadata"></video>
+            <canvas class="model-canvas" id="canvas-2" data-model="models/model-2.glb"></canvas>
             <div class="viewer-controls" aria-hidden="true">
-              <span class="control-hint">&#9788; Motion Study &middot; Autoplay Loop</span>
+              <span class="control-hint">&#9788; Drag to Rotate &middot; Scroll to Zoom</span>
             </div>
           </div>
         </div>
@@ -234,16 +234,16 @@
           <div class="model-description">
             <p>A dark, moody rendering that pushes the boundaries of liquid simulation and volumetric lighting. This kombucha bottle is presented against a backdrop of deep shadow and gilded accents, evoking the opulent atmosphere of a nineteenth-century botanical laboratory. The rich, amber-tinged liquid within the bottle is rendered with subsurface scattering to accurately convey its natural opacity and color depth. Micro-bubbles cling to the interior glass surface, and a subtle film of culture at the liquid&rsquo;s surface catches the light&mdash;every detail testament to the uncompromising pursuit of visual truth that defines the atelier&rsquo;s practice.</p>
           </div>
-          <div class="model-viewer-container" data-slot="3">
+          <div class="model-viewer-container">
             <div class="model-frame-ornament" aria-hidden="true">
               <div class="frame-corner fc-tl"></div>
               <div class="frame-corner fc-tr"></div>
               <div class="frame-corner fc-bl"></div>
               <div class="frame-corner fc-br"></div>
             </div>
-            <video class="model-video" id="video-3" src="videos/video-3.mp4" muted loop autoplay playsinline preload="metadata"></video>
+            <canvas class="model-canvas" id="canvas-3" data-model="models/model-3.glb"></canvas>
             <div class="viewer-controls" aria-hidden="true">
-              <span class="control-hint">&#9788; Motion Study &middot; Autoplay Loop</span>
+              <span class="control-hint">&#9788; Drag to Rotate &middot; Scroll to Zoom</span>
             </div>
           </div>
         </div>
@@ -418,5 +418,10 @@
     </div>
   </footer>
 
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
