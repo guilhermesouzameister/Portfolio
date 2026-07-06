@@ -44,24 +44,23 @@
 
     var time = 0;
     function animateSplash() {
-      time += 0.008;
+      time += 0.006;
       splashes.forEach(function (path, idx) {
         var offset = idx * 1.2;
-        var basePoints = [
-          [0, 400], [50, 380], [80, 350], [120, 360], [160, 370],
-          [180, 390], [220, 370], [260, 350], [280, 320], [320, 340],
-          [360, 360], [380, 380], [420, 360], [460, 340], [500, 370],
-          [540, 350], [580, 330], [600, 360], [600, 400]
-        ];
-
-        var d = 'M' + basePoints[0][0] + ',' + basePoints[0][1];
-        for (var j = 1; j < basePoints.length; j++) {
-          var wave = Math.sin(time + offset + j * 0.5) * (5 + idx * 3);
-          var px = basePoints[j][0];
-          var py = basePoints[j][1] + wave;
-          d += ' L' + px + ',' + py;
+        var amplitude = 4 + idx * 3;
+        /* Generate wave path matching the 800-wide hero splashes */
+        var w = 800;
+        var baseY = [500, 350, 250][idx] || 300;
+        var points = 9;
+        var stepX = w / points;
+        var d = 'M0,' + baseY;
+        for (var j = 1; j <= points; j++) {
+          var px = j * stepX;
+          var wave = Math.sin(time + offset + j * 0.6) * amplitude;
+          var py = baseY - 40 - (j % 2 === 0 ? 20 : 0) + wave;
+          d += ' L' + Math.round(px) + ',' + Math.round(py);
         }
-        d += ' Z';
+        d += ' L' + w + ',' + baseY + ' Z';
         path.setAttribute('d', d);
       });
       requestAnimationFrame(animateSplash);

@@ -55,6 +55,116 @@ body {
   color: var(--black-deep);
 }
 
+/* ─── VINTAGE BEVERAGE BACKGROUND BOTTLES ─── */
+.vintage-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.vintage-bottle {
+  position: absolute;
+  opacity: 0.55;
+  transition: opacity 0.3s ease;
+}
+
+.vb-1 {
+  left: 3%;
+  top: 10%;
+  width: 60px;
+  height: 55vh;
+  animation: bottleFloat1 18s ease-in-out infinite;
+}
+
+.vb-2 {
+  right: 5%;
+  top: 25%;
+  width: 50px;
+  height: 50vh;
+  animation: bottleFloat2 22s ease-in-out infinite;
+}
+
+.vb-3 {
+  left: 8%;
+  bottom: 15%;
+  width: 40px;
+  height: 40vh;
+  animation: bottleFloat3 20s ease-in-out infinite;
+  opacity: 0.35;
+}
+
+.vb-4 {
+  right: 2%;
+  top: 8%;
+  width: 55px;
+  height: 60vh;
+  animation: bottleFloat4 25s ease-in-out infinite;
+  opacity: 0.4;
+}
+
+.vb-5 {
+  left: 50%;
+  bottom: 5%;
+  width: 35px;
+  height: 35vh;
+  animation: bottleFloat5 16s ease-in-out infinite;
+  opacity: 0.25;
+}
+
+@keyframes bottleFloat1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-15px) rotate(0.5deg); }
+  66% { transform: translateY(8px) rotate(-0.3deg); }
+}
+
+@keyframes bottleFloat2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(-0.5deg); }
+}
+
+@keyframes bottleFloat3 {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-12px); }
+  80% { transform: translateY(5px); }
+}
+
+@keyframes bottleFloat4 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-18px) rotate(0.4deg); }
+  75% { transform: translateY(10px) rotate(-0.2deg); }
+}
+
+@keyframes bottleFloat5 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Ensure all sections sit above the vintage background */
+.ornamental-top-bar,
+.hero,
+.section-divider,
+.splash-interlude,
+.section,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── SPLASH INTERLUDES (between sections) ─── */
+.splash-interlude {
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.splash-int-1 { height: 100px; margin: -20px 0; }
+.splash-int-2 { height: 80px; margin: -10px 0; }
+.splash-int-3 { height: 90px; margin: -15px 0; }
+.splash-int-4 { height: 70px; margin: -10px 0; }
+.splash-int-5 { height: 110px; margin: -20px 0; }
+
 /* ─── ORNAMENTAL TOP BAR ─── */
 .ornamental-top-bar {
   position: fixed;
@@ -135,30 +245,26 @@ body {
 }
 
 .splash-1 {
-  height: 300px;
+  height: 400px;
   animation: splashWave1 8s ease-in-out infinite;
+  opacity: 1;
 }
 
 .splash-2 {
-  height: 200px;
+  height: 250px;
   animation: splashWave2 10s ease-in-out infinite;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .splash-3 {
-  height: 150px;
+  height: 180px;
   animation: splashWave3 7s ease-in-out infinite;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 .splash-path {
-  fill: url(#liquidGradient) var(--gold-shimmer);
-  fill: var(--liquid-amber);
+  /* fills are now inline SVG gradients — no CSS override needed */
 }
-
-.splash-1 .splash-path { fill: rgba(180, 130, 40, 0.07); }
-.splash-2 .splash-path { fill: rgba(201, 162, 39, 0.05); }
-.splash-3 .splash-path { fill: rgba(212, 168, 67, 0.03); }
 
 @keyframes splashWave1 {
   0%, 100% { transform: translateX(0) scaleY(1); }
