@@ -29,7 +29,7 @@ export default function Hero() {
           Est. MMXXVI
         </span>
         <span className="font-cinzel tracking-luxe-sm text-[10px] md:text-xs uppercase hidden sm:block">
-          Atelier · Brasil
+          
         </span>
       </motion.header>
 
