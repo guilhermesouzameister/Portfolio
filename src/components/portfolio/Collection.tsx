@@ -72,10 +72,7 @@ function BottleBlock({ bottle, index }: { bottle: Bottle; index: number }) {
             {/* Top + bottom shadow gradients for cinematic feel */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/70 to-transparent" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent" />
-            {/* Caption */}
-            <div className="absolute bottom-3 left-0 right-0 text-center">
-              <span className="font-cinzel tracking-luxe-sm text-[9px] uppercase text-gold/80">
-                © Drag to Rotate · Scroll to Zoom
+  
               </span>
             </div>
           </div>
