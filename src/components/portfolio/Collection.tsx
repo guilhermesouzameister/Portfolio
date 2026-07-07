@@ -78,7 +78,7 @@ function BottleBlock({ bottle, index }: { bottle: Bottle; index: number }) {
             {/* Caption */}
             <div className="absolute bottom-3 left-0 right-0 text-center">
               <span className="font-cinzel tracking-luxe-sm text-[9px] uppercase text-gold/80">
-                © Drag to Rotate · Scroll to Zoom
+                
               </span>
             </div>
           </div>
