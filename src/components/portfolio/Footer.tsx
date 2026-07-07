@@ -3,7 +3,11 @@
 import { motion } from "framer-motion";
 import { Monogram, GoldRule } from "./Ornaments";
 
-const socials = ["Instagram", "LinkedIn", "Behance"];
+const socials = [
+  { name: "Instagram", url: "https://www.instagram.com/guui.rafael.meister/" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/guilherme-rafael-585b0026b/" },
+  { name: "Behance", url: "https://www.behance.net/guilhermesouza374" },
+];
 
 export default function Footer() {
   return (
@@ -53,11 +57,13 @@ export default function Footer() {
         <div className="mt-8 flex items-center gap-6 md:gap-8">
           {socials.map((s) => (
             <a
-              key={s}
-              href="#"
+              key={s.name}
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-cinzel tracking-luxe-sm text-[10px] md:text-xs uppercase text-cream-dim hover:text-gold transition-colors duration-300 relative group"
             >
-              {s}
+              {s.name}
               <span className="absolute -bottom-1 left-0 right-0 mx-auto h-px w-0 bg-gold group-hover:w-full transition-all duration-300" />
             </a>
           ))}
