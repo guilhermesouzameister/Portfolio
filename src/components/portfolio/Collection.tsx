@@ -7,7 +7,6 @@ type Bottle = {
   name: string;
   description: string;
   video: string;
-  poster?: string;
 };
 
 const bottles: Bottle[] = [
@@ -40,7 +39,7 @@ function BottleBlock({ bottle, index }: { bottle: Bottle; index: number }) {
     <Reveal>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Text column */}
-        <div className={`lg:col-span-6 ${reversed ? "lg:order-2" : ""}`}>
+        <div className={`lg:col-span-5 ${reversed ? "lg:order-2" : ""}`}>
           <div className="flex items-baseline gap-5">
             <span className="font-display text-5xl md:text-6xl text-gold-gradient font-semibold leading-none glow-gold-soft">
               {bottle.numeral}
@@ -57,9 +56,9 @@ function BottleBlock({ bottle, index }: { bottle: Bottle; index: number }) {
           </p>
         </div>
 
-        {/* Video column */}
-        <div className={`lg:col-span-6 ${reversed ? "lg:order-1" : ""}`}>
-          <div className="video-frame aspect-[9/16] max-h-[640px] mx-auto w-full max-w-md">
+        {/* Video column — landscape 16:9 for 1920x1080 MP4s */}
+        <div className={`lg:col-span-7 ${reversed ? "lg:order-1" : ""}`}>
+          <div className="video-frame aspect-video mx-auto w-full max-w-2xl">
             <video
               className="absolute inset-0 w-full h-full object-cover"
               src={bottle.video}
@@ -70,9 +69,12 @@ function BottleBlock({ bottle, index }: { bottle: Bottle; index: number }) {
               preload="auto"
             />
             {/* Top + bottom shadow gradients for cinematic feel */}
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/70 to-transparent" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent" />
-  
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/70 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent" />
+            {/* Caption */}
+            <div className="absolute bottom-3 left-0 right-0 text-center">
+              <span className="font-cinzel tracking-luxe-sm text-[9px] uppercase text-gold/80">
+                © Drag to Rotate · Scroll to Zoom
               </span>
             </div>
           </div>
