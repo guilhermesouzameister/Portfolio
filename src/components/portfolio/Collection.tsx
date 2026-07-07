@@ -18,7 +18,7 @@ const bottles: Bottle[] = [
     numeral: "I",
     name: "Henniez Idea (unnoficial) ",
     description:
-      "A photorealistic study of a premium swiss water rendered in Blender Cycles, capturing the delicate interplay of plastic refraction, and study of 4 different types of studio lightning (fill light, rim light, key light and background light). The label design draws upon Nordic traditions with a strong red tone, so I decided to highlight that point by using 2 area lights in red tones",
+      "A photorealistic study of a premium swiss water rendered in Blender Cycles, capturing the delicate interplay of plastic refraction, and study of 4 different types of studio lightning (fill light, rim light, key light and background light). The label design draws upon Nordic traditions with a strong red tone, so I decided to highlight that point by contrast, using 2 area lights in blue tones",
     video: "/videos/heritage_tonic.mp4",
   },
   {
