@@ -16,21 +16,21 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const bottles: Bottle[] = [
   {
     numeral: "I",
-    name: "Henniez Swiss Water Concept (unnoficial) ",
+    name: "Henniez Idea (unnoficial) ",
     description:
       "A photorealistic study of a premium swiss water rendered in Blender Cycles, capturing the delicate interplay of plastic refraction, and study of 4 different types of studio lightning (fill light, rim light, key light and background light). The label design draws upon Nordic traditions with a strong red tone, so I decided to highlight that point by using 2 area lights in red tones",
     video: "/videos/heritage_tonic.mp4",
   },
   {
     numeral: "II",
-    name: "Awake Mate Energy Concept (unnoficial)",
+    name: "Awake Mate Idea (unnoficial)",
     description:
-      "An exploration of a psychodelic concept, as the visual concept of the brand flows around that specific effect of the Mate, the scenario was made by a mix of textures and different scales of it, highlighting the logo of the product by the quick switch of colors, also improved by composition.",
+      "An exploration of a psychodelic concept, as the visual concept of the brand flows around the specific energy boost effect of the Mate, the scenario was made by a mix of textures and different scales of it, highlighting the logo of the product by the quick switch of colors, also improved by composition.",
     video: "/videos/artisan_botanical.mp4",
   },
   {
     numeral: "III",
-    name: "CocoFit Concept (unnoficial)",
+    name: "CocoFit Idea (unnoficial)",
     description:
       "A fresh coconut and watermelon-based drink, in this concept I decided to highlight the freshness and summer context of a coconut drink, with a blue sky, fresh watermelon and iced drink. The richness of the scenario complemented directly the can, as the smooth camera movement focus in",
     video: "/videos/noir_kombucha.mp4",
