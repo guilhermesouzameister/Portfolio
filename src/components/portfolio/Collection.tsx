@@ -9,6 +9,10 @@ type Bottle = {
   video: string;
 };
 
+// Next.js does NOT auto-prefix basePath for plain <video src="/...">.
+// We read it from the env var set in next.config.ts and prefix manually.
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const bottles: Bottle[] = [
   {
     numeral: "I",
@@ -61,7 +65,7 @@ function BottleBlock({ bottle, index }: { bottle: Bottle; index: number }) {
           <div className="video-frame aspect-video mx-auto w-full max-w-2xl">
             <video
               className="absolute inset-0 w-full h-full object-cover"
-              src={bottle.video}
+              src={`${BASE}${bottle.video}`}
               autoPlay
               loop
               muted

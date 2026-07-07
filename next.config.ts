@@ -31,6 +31,12 @@ const nextConfig: NextConfig = {
   basePath,
   assetPrefix: basePath || undefined,
 
+  // Expose basePath to the browser so plain <video src> / <a href> tags
+  // can be prefixed manually (Next.js only auto-prefixes <Link> and <Image>)
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
+
   // The /_next/static folder must NOT be processed by Jekyll — handled by .nojekyll
   typescript: {
     ignoreBuildErrors: true,
