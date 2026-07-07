@@ -16,23 +16,23 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const bottles: Bottle[] = [
   {
     numeral: "I",
-    name: "Heritage Tonic Water",
+    name: "Henniez Swiss Water Concept (unnoficial) ",
     description:
-      "A photorealistic study of a premium tonic water bottle rendered in Blender Cycles, capturing the delicate interplay of glass refraction, effervescent carbonation, and the warm amber glow of studio lighting. The label design draws upon Victorian typographic traditions, with serif letterforms and ornamental borders that evoke the heritage of botanical tonics first crafted in the apothecaries of Georgian London. Every droplet of condensation on the glass surface has been individually placed and physically simulated to achieve maximum realism.",
+      "A photorealistic study of a premium swiss water rendered in Blender Cycles, capturing the delicate interplay of plastic refraction, and study of 4 different types of studio lightning (fill light, rim light, key light and background light). The label design draws upon Nordic traditions with a strong red tone, so I decided to highlight that point by using 2 area lights in red tones",
     video: "/videos/heritage_tonic.mp4",
   },
   {
     numeral: "II",
-    name: "Artisan Sparkling Botanical",
+    name: "Awake Mate Energy Concept (unnoficial)",
     description:
-      "An exploration of organic elegance—a slender, flute-style bottle designed for a premium botanical sparkling water. This piece showcases the studio's ability to render complex transparent materials with physically accurate caustics and internal light dispersion. The bottle's form draws inspiration from the elongated glassware of the Belle Époque, while the minimalist label treatment grounds it firmly in contemporary luxury. Fine bubbles rise through the liquid in a simulation that mirrors the natural effervescence of a freshly opened bottle, captured at the precise moment of peak visual delight.",
+      "An exploration of a psychodelic concept, as the visual concept of the brand flows around that specific effect of the Mate, the scenario was made by a mix of textures and different scales of it, highlighting the logo of the product by the quick switch of colors, also improved by composition.",
     video: "/videos/artisan_botanical.mp4",
   },
   {
     numeral: "III",
-    name: "Noir Kombucha Reserve",
+    name: "CocoFit Concept (unnoficial)",
     description:
-      "A dark, moody rendering that pushes the boundaries of liquid simulation and volumetric lighting. This kombucha bottle is presented against a backdrop of deep shadow and gilded accents, evoking the opulent atmosphere of a nineteenth-century botanical laboratory. The rich, amber-ringed liquid within the bottle is rendered with subsurface scattering to accurately convey its natural opacity and color depth. Micro-bubbles cling to the interior glass surface, and a subtle film of culture at the liquid's surface catches the light—every detail testament to the uncompromising pursuit of visual truth that defines the atelier's practice.",
+      "A fresh coconut and watermelon-based drink, in this concept I decided to highlight the freshness and summer context of a coconut drink, with a blue sky, fresh watermelon and iced drink. The richness of the scenario complemented directly the can, as the smooth camera movement focus in",
     video: "/videos/noir_kombucha.mp4",
   },
 ];
