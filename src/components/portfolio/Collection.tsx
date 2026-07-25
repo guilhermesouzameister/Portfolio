@@ -103,9 +103,8 @@ export default function Collection() {
 
         <Reveal delay={0.15}>
           <p className="mt-8 max-w-2xl mx-auto text-center font-garamond italic text-cream-dim text-base md:text-lg leading-[1.85]">
-            Three exemplary works, presented as interactive 3D models. Each
-            piece may be rotated, zoomed, and examined from every angle—a
-            privilege once reserved for those who held the physical object.
+            Three exemplary works. Each
+            piece totally made digitally in Blender. 
           </p>
         </Reveal>
 
