@@ -108,8 +108,6 @@ export default function Footer() {
         <div className="mt-16 w-full">
           <div className="rule-gold-thin mb-6" />
           <p className="font-garamond text-cream-dim text-xs md:text-sm italic leading-relaxed">
-            © MMXXVI Guilherme Rafael. All rights reserved.
-            <br />
             Crafted with devotion to Jesus.
           </p>
         </div>
