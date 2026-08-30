@@ -49,7 +49,7 @@ export default function Hero() {
           transition={{ delay: 0.3, duration: 1 }}
           className="mt-8 font-cinzel tracking-luxe text-[10px] md:text-xs uppercase text-gold"
         >
-          Est. MMXXVI
+          .
         </motion.p>
 
         <motion.h1
