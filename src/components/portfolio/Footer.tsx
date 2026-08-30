@@ -108,7 +108,7 @@ export default function Footer() {
         <div className="mt-16 w-full">
           <div className="rule-gold-thin mb-6" />
           <p className="font-garamond text-cream-dim text-xs md:text-sm italic leading-relaxed">
-            Crafted with devotion to Jesus.
+            Glory to Jesus.
           </p>
         </div>
       </div>
