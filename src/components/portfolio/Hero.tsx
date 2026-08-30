@@ -26,7 +26,7 @@ export default function Hero() {
         className="absolute top-0 left-0 right-0 flex items-center justify-between px-6 md:px-12 py-6 text-gold"
       >
         <span className="font-cinzel tracking-luxe-sm text-[10px] md:text-xs uppercase">
-          Freelancer
+          .
         </span>
         <span className="font-cinzel tracking-luxe-sm text-[10px] md:text-xs uppercase hidden sm:block">
           
@@ -49,7 +49,7 @@ export default function Hero() {
           transition={{ delay: 0.3, duration: 1 }}
           className="mt-8 font-cinzel tracking-luxe text-[10px] md:text-xs uppercase text-gold"
         >
-          .
+          Freelancer
         </motion.p>
 
         <motion.h1
