@@ -2,18 +2,22 @@
 
 import { Reveal, OrnateHeading, GoldRule, Filigree } from "./Ornaments";
 
-type Bottle = {
+type Work = {
   numeral: string;
   name: string;
   description: string;
-  video: string;
+  video?: string;
+  image?: string;
 };
 
 // Next.js does NOT auto-prefix basePath for plain <video src="/...">.
 // We read it from the env var set in next.config.ts and prefix manually.
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-const bottles: Bottle[] = [
+/* ====================================================================
+   TRABALHOS EM VÍDEO (I, II, III)
+   ==================================================================== */
+const bottles: Work[] = [
   {
     numeral: "I",
     name: "Henniez Idea (unnoficial) ",
@@ -37,7 +41,44 @@ const bottles: Bottle[] = [
   },
 ];
 
-function BottleBlock({ bottle, index }: { bottle: Bottle; index: number }) {
+/* ====================================================================
+   ✦ NOVOS TRABALHOS EM PNG (IV, V, VI) — EDITE AQUI ✦
+
+   Como trocar cada trabalho:
+   1. IMAGEM  → substitua o arquivo em  public/works/
+      (work-iv.png, work-v.png, work-vi.png) mantendo o mesmo nome,
+      ou altere o caminho no campo "image" abaixo.
+   2. NOME    → edite o campo "name".
+   3. DESCRIÇÃO → edite o campo "description".
+
+   Qualquer PNG funciona (quadrado, vertical, 16:9) — a imagem é
+   exibida completa dentro da moldura, sem cortes.
+   ==================================================================== */
+const worksPng: Work[] = [
+  {
+    numeral: "IV",
+    name: "Work Title — Placeholder",
+    description:
+      "Replace this text with a short description of the work: the concept behind it, tools and techniques used (e.g. Blender Cycles, studio lighting, materials) and what you want to highlight about the final render.",
+    image: "/works/work-iv.png",
+  },
+  {
+    numeral: "V",
+    name: "Work Title — Placeholder",
+    description:
+      "Replace this text with a short description of the work: the concept behind it, tools and techniques used (e.g. Blender Cycles, studio lighting, materials) and what you want to highlight about the final render.",
+    image: "/works/work-v.png",
+  },
+  {
+    numeral: "VI",
+    name: "Work Title — Placeholder",
+    description:
+      "Replace this text with a short description of the work: the concept behind it, tools and techniques used (e.g. Blender Cycles, studio lighting, materials) and what you want to highlight about the final render.",
+    image: "/works/work-vi.png",
+  },
+];
+
+function WorkBlock({ work, index }: { work: Work; index: number }) {
   const reversed = index % 2 === 1;
   return (
     <Reveal>
@@ -46,39 +87,48 @@ function BottleBlock({ bottle, index }: { bottle: Bottle; index: number }) {
         <div className={`lg:col-span-5 ${reversed ? "lg:order-2" : ""}`}>
           <div className="flex items-baseline gap-5">
             <span className="font-display text-5xl md:text-6xl text-gold-gradient font-semibold leading-none glow-gold-soft">
-              {bottle.numeral}
+              {work.numeral}
             </span>
             <div className="flex-1">
               <h3 className="font-display text-2xl md:text-4xl text-cream italic leading-tight">
-                {bottle.name}
+                {work.name}
               </h3>
             </div>
           </div>
           <div className="rule-gold-thin mt-5 mb-6" />
           <p className="font-garamond text-cream-dim text-base md:text-lg leading-[1.85]">
-            {bottle.description}
+            {work.description}
           </p>
         </div>
 
-        {/* Video column — landscape 16:9 for 1920x1080 MP4s */}
+        {/* Media column — video (16:9) or PNG image */}
         <div className={`lg:col-span-7 ${reversed ? "lg:order-1" : ""}`}>
           <div className="video-frame aspect-video mx-auto w-full max-w-2xl">
-            <video
-              className="absolute inset-0 w-full h-full object-cover"
-              src={`${BASE}${bottle.video}`}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-            />
+            {work.video ? (
+              <video
+                className="absolute inset-0 w-full h-full object-cover"
+                src={`${BASE}${work.video}`}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+              />
+            ) : (
+              <img
+                className="absolute inset-0 w-full h-full object-contain"
+                src={`${BASE}${work.image}`}
+                alt={work.name}
+                loading="lazy"
+              />
+            )}
             {/* Top + bottom shadow gradients for cinematic feel */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/70 to-transparent" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent" />
             {/* Caption */}
             <div className="absolute bottom-3 left-0 right-0 text-center">
               <span className="font-cinzel tracking-luxe-sm text-[9px] uppercase text-gold/80">
-                
+
               </span>
             </div>
           </div>
@@ -103,8 +153,8 @@ export default function Collection() {
 
         <Reveal delay={0.15}>
           <p className="mt-8 max-w-2xl mx-auto text-center font-garamond italic text-cream-dim text-base md:text-lg leading-[1.85]">
-            Three exemplary works. Each
-            piece totally made digitally in Blender. 
+            A curated selection of works. Each
+            piece totally made digitally in Blender.
           </p>
         </Reveal>
 
@@ -116,7 +166,10 @@ export default function Collection() {
 
         <div className="mt-20 space-y-28 md:space-y-36">
           {bottles.map((b, i) => (
-            <BottleBlock key={b.name} bottle={b} index={i} />
+            <WorkBlock key={b.video ?? b.name} work={b} index={i} />
+          ))}
+          {worksPng.map((w, i) => (
+            <WorkBlock key={w.image ?? w.name} work={w} index={bottles.length + i} />
           ))}
         </div>
       </div>
