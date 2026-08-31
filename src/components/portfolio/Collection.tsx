@@ -20,60 +20,47 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const bottles: Work[] = [
   {
     numeral: "I",
-    name: "Henniez Idea (unnoficial) ",
+    name: "Henniez Study",
     description:
       "A photorealistic study of a premium swiss water rendered in Blender Cycles, capturing the delicate interplay of plastic refraction, and study of 4 different types of studio lightning (fill light, rim light, key light and background light). The label design draws upon Nordic traditions with a strong red tone, so I decided to highlight that point by contrast, using 2 area lights in blue tones.",
     video: "/videos/heritage_tonic.mp4",
   },
   {
     numeral: "II",
-    name: "Awake Mate Idea (unnoficial)",
+    name: "Awake Mate Study",
     description:
       "An exploration of a psychodelic concept, as the visual concept of the brand flows around the specific energy boost effect of the Mate, the scenario was made by a mix of textures and different scales of it, highlighting the logo of the product by the quick switch of colors, also improved by composition.",
     video: "/videos/artisan_botanical.mp4",
   },
   {
     numeral: "III",
-    name: "CocoFit Idea (unnoficial)",
+    name: "CocoFit Study",
     description:
       "A fresh coconut and watermelon-based drink, in this concept I decided to highlight the freshness and summer context of a coconut drink, with a blue sky, fresh watermelon and iced drink. The richness of the scenario complemented directly the can, as the smooth camera movement focus in.",
     video: "/videos/noir_kombucha.mp4",
   },
 ];
 
-/* ====================================================================
-   ✦ NOVOS TRABALHOS EM PNG (IV, V, VI) — EDITE AQUI ✦
-
-   Como trocar cada trabalho:
-   1. IMAGEM  → substitua o arquivo em  public/works/
-      (work-iv.png, work-v.png, work-vi.png) mantendo o mesmo nome,
-      ou altere o caminho no campo "image" abaixo.
-   2. NOME    → edite o campo "name".
-   3. DESCRIÇÃO → edite o campo "description".
-
-   Qualquer PNG funciona (quadrado, vertical, 16:9) — a imagem é
-   exibida completa dentro da moldura, sem cortes.
-   ==================================================================== */
 const worksPng: Work[] = [
   {
     numeral: "IV",
-    name: "Work Title — Placeholder",
+    name: "Lupa's Kombucha Study",
     description:
-      "Replace this text with a short description of the work: the concept behind it, tools and techniques used (e.g. Blender Cycles, studio lighting, materials) and what you want to highlight about the final render.",
+      "A minimalist studio composition featuring sharp front lighting to accentuate the subtle typography and crisp condensation on the bottle. A soft pink backlight provides a delicate contrast, creating a balanced and cohesive visual identity aligned with Lupa's Passion Fruit Kombucha.",
     image: "/works/work-iv.png",
   },
   {
     numeral: "V",
-    name: "Work Title — Placeholder",
+    name: "Yes Maté Study",
     description:
-      "Replace this text with a short description of the work: the concept behind it, tools and techniques used (e.g. Blender Cycles, studio lighting, materials) and what you want to highlight about the final render.",
+      "This composition utilizes the design principle of Pattern and Anomaly to isolate and emphasize a single can within a uniform array. A strong backlight eliminates spatial gaps between the cans, while a tailored key light crafts precise surface reflections to establish focal depth.",
     image: "/works/work-v.png",
   },
   {
     numeral: "VI",
-    name: "Work Title — Placeholder",
+    name: "Radiate Kombucha Study",
     description:
-      "Replace this text with a short description of the work: the concept behind it, tools and techniques used (e.g. Blender Cycles, studio lighting, materials) and what you want to highlight about the final render.",
+      "Utilizing perspective distortion, the camera angle emphasizes the top of the can. A focused key light sharpens the branding and subtle details, while a soft backlight rim-lights the silhouette, cleanly separating the packaging from the surrounding green apples to build depth and contrast.",
     image: "/works/work-vi.png",
   },
 ];
