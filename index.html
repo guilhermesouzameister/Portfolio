@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guilherme Rafael | 3D Designer & Consultant for Beverages</title>
+<meta name="description" content="Photorealistic visual identities for non-alcoholic beverage brands through precision 3D rendering and strategic design consultation.">
+<meta name="keywords" content="3D designer, beverage rendering, Blender, photorealistic, non-alcoholic beverages, Guilherme Rafael">
+<meta property="og:title" content="Guilherme Rafael | 3D Designer & Consultant for Beverages">
+<meta property="og:description" content="Photorealistic visual identities for non-alcoholic beverage brands through precision 3D rendering and strategic design consultation.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2F4A63">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%232F4A63'/><text x='32' y='42' font-size='28' font-family='Arial,sans-serif' font-weight='700' text-anchor='middle' fill='white'>GR</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..800&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --slate:#2F4A63;      /* base color */
+  --deep:#1C2D3E;       /* darker step of the base */
+  --mist:#EDF1F5;       /* lighter step of the base */
+  --line:#C9D4DF;
+  --ink:#16222E;
+  --mute:#4B5D6F;
+  --ice:#A9C7E2;        /* highlight on dark areas */
+  --pad:clamp(20px,5vw,64px);
+  --head:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);font-size:18px;line-height:1.65;color:var(--ink);background:var(--mist);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible,button:focus-visible,.media:focus-visible{outline:2px solid var(--ice);outline-offset:4px}
+.pad{padding-left:var(--pad);padding-right:var(--pad)}
+h1,h2,h3,.ui{font-family:var(--head)}
+h2{font-weight:700;font-stretch:112%;font-size:clamp(28px,3.6vw,44px);line-height:1.05;letter-spacing:-.02em}
+h3{font-weight:650;font-stretch:108%;font-size:clamp(20px,2vw,26px);line-height:1.15;letter-spacing:-.01em;margin-bottom:12px}
+p{max-width:60ch}
+
+/* ---------- hero ---------- */
+.hero{background:var(--slate);color:#fff;padding-bottom:clamp(40px,6vw,88px);overflow:hidden}
+.top{display:flex;justify-content:space-between;align-items:center;padding-top:26px;padding-bottom:26px;font-family:var(--head);font-size:15px}
+.top .mono{font-weight:800;font-stretch:120%;letter-spacing:.02em}
+.top nav{display:flex;gap:clamp(16px,3vw,36px)}
+.top a{text-decoration:none;opacity:.8}
+.top a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+h1{font-weight:800;font-stretch:118%;font-size:clamp(54px,12.5vw,190px);line-height:.88;letter-spacing:-.035em;margin:clamp(24px,5vw,72px) 0 clamp(32px,5vw,64px)}
+.hero-grid{display:grid;grid-template-columns:minmax(240px,1fr) 2.4fr;gap:clamp(24px,4vw,64px);align-items:end}
+.hero-copy .role{font-family:var(--head);font-size:clamp(18px,1.7vw,22px);font-weight:500;font-stretch:105%;line-height:1.25;margin-bottom:18px}
+.hero-copy p{color:#D4DFEA;font-size:17px}
+.hero-copy .avail{margin-top:28px;font-family:var(--head);font-size:15px;color:var(--ice)}
+.hero-copy .avail a{color:#fff;text-underline-offset:5px}
+.hero .media{margin-right:calc(var(--pad) * -1)}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.hero .media{margin-right:0}}
+
+/* ---------- media ---------- */
+.media{position:relative;overflow:hidden;aspect-ratio:16/9;background:linear-gradient(135deg,#3B5873,#243A50);cursor:zoom-in;border-radius:2px}
+.media video,.media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.media .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:16px;color:#8FA6BC;font-family:var(--head);font-size:13px}
+
+/* ---------- about ---------- */
+.about{padding-top:clamp(72px,10vw,140px);padding-bottom:clamp(72px,10vw,140px);display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px}
+.about h2{grid-column:1/6}
+.about .text{grid-column:6/13}
+.about .text p{font-size:clamp(19px,1.9vw,23px);line-height:1.55}
+.about .text p+p{margin-top:1em;font-size:18px;color:var(--mute)}
+.about dl{grid-column:6/13;margin-top:48px;display:grid;grid-template-columns:repeat(2,1fr);gap:0 24px;font-family:var(--head)}
+.about dl div{border-top:1px solid var(--line);padding:14px 0 18px}
+.about dt{font-size:14px;color:var(--mute)}
+.about dd{font-size:20px;font-weight:600;font-stretch:108%}
+@media(max-width:860px){.about h2,.about .text,.about dl{grid-column:1/-1}.about h2{margin-bottom:28px}}
+
+/* ---------- work ---------- */
+.work{background:#fff;padding-top:clamp(72px,10vw,140px);padding-bottom:clamp(72px,10vw,140px)}
+.work>header{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;margin-bottom:clamp(48px,7vw,96px)}
+.work>header h2{grid-column:1/6}
+.work>header p{grid-column:6/13;color:var(--mute);align-self:end}
+.row{display:grid;grid-template-columns:repeat(12,1fr);gap:20px 24px;align-items:end;margin-bottom:clamp(56px,8vw,120px)}
+.row:last-child{margin-bottom:0}
+.row .media{cursor:zoom-in}
+.row figcaption{font-family:var(--head)}
+.a .media{grid-column:1/9}.a .cap{grid-column:9/13}
+.b .cap{grid-column:1/5;order:1}.b .media{grid-column:5/13;order:2}
+.c .media{grid-column:1/8}.c .cap{grid-column:8/13}
+.d .cap{grid-column:1/6;order:1}.d .media{grid-column:6/13;order:2}
+.cap h3{margin-bottom:10px}
+.cap p{font-family:var(--body);font-size:16.5px;line-height:1.6;color:var(--mute)}
+.cap .tool{display:block;margin-top:14px;font-size:14px;color:var(--slate);font-weight:600}
+@media(max-width:860px){.row .media,.row .cap{grid-column:1/-1!important;order:0!important}.work>header h2,.work>header p{grid-column:1/-1}.work>header h2{margin-bottom:18px}}
+
+/* ---------- services ---------- */
+.services{background:var(--deep);color:#fff;padding-top:clamp(72px,10vw,140px);padding-bottom:clamp(72px,10vw,140px)}
+.services>header{max-width:760px;margin-bottom:clamp(48px,7vw,88px)}
+.services>header p{color:#B9C8D6;margin-top:20px}
+.pair{display:grid;grid-template-columns:1fr 1fr}
+.svc{padding:0 clamp(0px,3vw,48px) 0 0}
+.svc+.svc{padding:0 0 0 clamp(0px,3vw,48px);border-left:1px solid #3B5068}
+.svc .for{font-family:var(--head);font-size:15px;color:var(--ice);margin-bottom:8px}
+.svc h3{font-size:clamp(24px,2.6vw,34px);margin-bottom:28px}
+.svc ul{list-style:none}
+.svc li{padding:15px 0;border-top:1px solid #3B5068;font-size:17px;color:#DDE6EE}
+.svc li:last-child{border-bottom:1px solid #3B5068}
+@media(max-width:860px){.pair{grid-template-columns:1fr;gap:56px}.svc,.svc+.svc{padding:0;border:0}}
+
+/* ---------- process ---------- */
+.process{padding-top:clamp(72px,10vw,140px);padding-bottom:clamp(72px,10vw,140px)}
+.process h2{margin-bottom:clamp(40px,6vw,72px)}
+.steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:0 clamp(20px,2.4vw,36px)}
+.steps li{counter-increment:s;border-top:3px solid var(--slate);padding-top:18px}
+.steps li::before{content:"Step " counter(s);display:block;font-family:var(--head);font-size:14px;color:var(--mute);margin-bottom:14px}
+.steps p{font-size:16px;line-height:1.6;color:var(--mute)}
+@media(max-width:980px){.steps{grid-template-columns:1fr 1fr;gap:44px 28px}}
+@media(max-width:600px){.steps{grid-template-columns:1fr}}
+
+/* ---------- contact ---------- */
+.contact{background:var(--slate);color:#fff;padding-top:clamp(72px,10vw,140px);padding-bottom:40px}
+.contact .label{font-family:var(--head);font-size:16px;color:var(--ice);margin-bottom:18px}
+.contact .mail{display:inline-block;font-family:var(--head);font-weight:800;font-stretch:115%;font-size:clamp(26px,5.6vw,84px);line-height:1;letter-spacing:-.03em;text-decoration:none;border-bottom:3px solid var(--ice);padding-bottom:8px;overflow-wrap:anywhere}
+.contact .mail:hover{color:var(--ice)}
+.links{display:flex;gap:clamp(20px,4vw,48px);flex-wrap:wrap;margin-top:44px;font-family:var(--head);font-size:18px}
+.links a{text-underline-offset:6px}
+.base{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:clamp(72px,10vw,140px);padding-top:20px;border-top:1px solid #4A6580;font-family:var(--head);font-size:14px;color:#B9C8D6}
+
+/* ---------- lightbox ---------- */
+dialog{border:0;background:transparent;width:min(1400px,94vw);max-width:none;margin:auto;overflow:visible}
+dialog::backdrop{background:rgba(14,24,34,.92)}
+dialog .box{position:relative;background:#000}
+dialog video,dialog img{display:block;width:100%;max-height:86vh;object-fit:contain}
+dialog button{position:absolute;top:-46px;right:0;border:0;background:none;color:#fff;font-family:var(--head);font-size:15px;cursor:pointer;text-decoration:underline;text-underline-offset:5px}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<section class="hero" id="top">
+  <div class="top pad">
+    <span class="mono">GR</span>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="pad">
+    <h1>Guilherme<br>Rafael</h1>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="role">3D Designer & Consultant for Beverages</p>
+        <p>Crafting photorealistic visual identities for non-alcoholic beverage brands through precision 3D rendering and strategic design consultation.</p>
+        <p class="avail">Freelancer. Available for commissions: <a href="mailto:guilhermerafaelmeister2019@gmail.com">send a brief</a></p>
+      </div>
+      <figure class="media" data-type="video" data-src="videos/heritage_tonic.mp4" tabindex="0" role="button" aria-label="Open Henniez Study full size">
+        <div class="ph">videos/heritage_tonic.mp4</div>
+        <video src="videos/heritage_tonic.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="about pad" id="about">
+  <h2>What I do</h2>
+  <div class="text">
+    <p>As a 3D producer in the beverage industry, I create calibrated renders for retention rate. With precise lighting and controlled environments, I showcase labels and packaging on digital displays.</p>
+    <p>I combine advanced Blender skills with business strategy. The work also scales into B2B digital catalogs and investor pitch decks, with cost-efficiency, agility and no bureaucracy, a competitive alternative to traditional photography.</p>
+    <p>All work reflects Christian principles of righteousness and accountability before God, so my scope is dedicated exclusively to non-alcoholic brands.</p>
+  </div>
+  <dl>
+    <div><dt>Performance</dt><dd>3D</dd></div>
+    <div><dt>Renders</dt><dd>Unlimited</dd></div>
+    <div><dt>Scenarios</dt><dd>Unlimited</dd></div>
+    <div><dt>Fidelity</dt><dd>100% photorealistic</dd></div>
+  </dl>
+</section>
+
+<section class="work pad" id="work">
+  <header>
+    <h2>The collection</h2>
+    <p>A curated selection of studies. Each piece is made entirely in Blender.</p>
+  </header>
+
+  <figure class="row a">
+    <div class="media" data-type="video" data-src="videos/heritage_tonic.mp4" tabindex="0" role="button" aria-label="Open Henniez Study">
+      <div class="ph">videos/heritage_tonic.mp4</div>
+      <video src="videos/heritage_tonic.mp4" muted loop playsinline preload="metadata"></video>
+    </div>
+    <figcaption class="cap">
+      <h3>Henniez Study</h3>
+      <p>A photorealistic study of a premium Swiss water, rendered in Blender Cycles. It captures the interplay of plastic refraction and compares four studio lighting types: fill, rim, key and background. The label draws on Nordic traditions with a strong red, so two blue area lights add contrast to that point.</p>
+      <span class="tool">Animation, Blender Cycles</span>
+    </figcaption>
+  </figure>
+
+  <figure class="row b">
+    <div class="media" data-type="video" data-src="videos/artisan_botanical.mp4" tabindex="0" role="button" aria-label="Open Awake Mate Study">
+      <div class="ph">videos/artisan_botanical.mp4</div>
+      <video src="videos/artisan_botanical.mp4" muted loop playsinline preload="metadata"></video>
+    </div>
+    <figcaption class="cap">
+      <h3>Awake Mate Study</h3>
+      <p>An exploration of a psychedelic concept. The brand’s visual language flows around the energy boost of mate. The scene mixes textures at different scales, and quick color switches highlight the logo, supported by composition.</p>
+      <span class="tool">Animation</span>
+    </figcaption>
+  </figure>
+
+  <figure class="row c">
+    <div class="media" data-type="video" data-src="videos/noir_kombucha.mp4" tabindex="0" role="button" aria-label="Open CocoFit Study">
+      <div class="ph">videos/noir_kombucha.mp4</div>
+      <video src="videos/noir_kombucha.mp4" muted loop playsinline preload="metadata"></video>
+    </div>
+    <figcaption class="cap">
+      <h3>CocoFit Study</h3>
+      <p>A fresh coconut and watermelon drink. The concept leans into summer, with blue sky, watermelon and an iced can. The rich scene complements the can as a smooth camera movement pushes in.</p>
+      <span class="tool">Animation</span>
+    </figcaption>
+  </figure>
+
+  <figure class="row d">
+    <div class="media" data-type="image" data-src="works/work-iv.png" tabindex="0" role="button" aria-label="Open Lupa's Kombucha Study">
+      <div class="ph">works/work-iv.png</div>
+      <img src="works/work-iv.png" alt="Lupa's Kombucha Study" loading="lazy">
+    </div>
+    <figcaption class="cap">
+      <h3>Lupa’s Kombucha Study</h3>
+      <p>A minimalist studio composition. Sharp front lighting accentuates the subtle typography and crisp condensation on the bottle, while a soft pink backlight adds contrast aligned with Lupa’s Passion Fruit Kombucha.</p>
+      <span class="tool">Still image</span>
+    </figcaption>
+  </figure>
+
+  <figure class="row a">
+    <div class="media" data-type="image" data-src="works/work-v.png" tabindex="0" role="button" aria-label="Open Yes Maté Study">
+      <div class="ph">works/work-v.png</div>
+      <img src="works/work-v.png" alt="Yes Maté Study" loading="lazy">
+    </div>
+    <figcaption class="cap">
+      <h3>Yes Maté Study</h3>
+      <p>Pattern and anomaly isolate and emphasize a single can within a uniform array. A strong backlight removes the gaps between the cans, and a tailored key light shapes precise surface reflections to create focal depth.</p>
+      <span class="tool">Still image</span>
+    </figcaption>
+  </figure>
+
+  <figure class="row b">
+    <div class="media" data-type="image" data-src="works/work-vi.png" tabindex="0" role="button" aria-label="Open Radiate Kombucha Study">
+      <div class="ph">works/work-vi.png</div>
+      <img src="works/work-vi.png" alt="Radiate Kombucha Study" loading="lazy">
+    </div>
+    <figcaption class="cap">
+      <h3>Radiate Kombucha Study</h3>
+      <p>Perspective distortion pushes the camera angle toward the top of the can. A focused key light sharpens branding and detail, while a soft backlight rim-lights the silhouette and separates the can from the green apples around it.</p>
+      <span class="tool">Still image</span>
+    </figcaption>
+  </figure>
+</section>
+
+<section class="services pad" id="services">
+  <header>
+    <h2>Commissions & services</h2>
+    <p>Two services for two phases of a beverage brand’s visual journey, from label validation to launch. Both are held to the same standard of photorealism and strategic precision.</p>
+  </header>
+  <div class="pair">
+    <div class="svc">
+      <div class="for">For pre-launch label testing & design assurance</div>
+      <h3>The Validation Sprint</h3>
+      <ul>
+        <li>Digital validation of label designs before committing to physical printing</li>
+        <li>Full 3D bottle rendering with accurate glass refraction and shadow casting</li>
+        <li>Multiple design iteration rounds with brand alignment documentation</li>
+        <li>Brand identity guidelines for long-term visual consistency</li>
+        <li>Own asset library delivered for future in-house use</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="for">For social media presence at launch</div>
+      <h3>The Go-To-Market Engine</h3>
+      <ul>
+        <li>Photorealistic static images optimized for all device ratios and screen types</li>
+        <li>Short-form 3D animations for Instagram Reels, TikTok and YouTube Shorts</li>
+        <li>Complete 3D infrastructure with 100% asset ownership</li>
+        <li>Infinite digital environments for future campaign flexibility</li>
+        <li>3D Performance Blueprint with creative rationale and asset roadmap</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="process pad" id="process">
+  <h2>The craft</h2>
+  <ol class="steps">
+    <li>
+      <h3>Reference & brief</h3>
+      <p>I start from the brand’s visual DNA: a study of its digital personality and the chosen product, taken from the label PNG file or a custom bottle.</p>
+    </li>
+    <li>
+      <h3>Geometry & material</h3>
+      <p>Bottles are built to real manufacturing specifications: wall thickness, glass taper, base profile and neck finish. Materials are physically based, with glass at measured IOR values, liquids with accurate absorption, and label substrates with scanned texture data.</p>
+    </li>
+    <li>
+      <h3>Lighting & lookdev</h3>
+      <p>Each scene uses a calibrated studio rig that mirrors professional product photography: soft key lights, precise rim highlights and controlled fill ratios. Environment maps and area lights are tuned for exact caustics and specular reflections.</p>
+    </li>
+    <li>
+      <h3>Render & delivery</h3>
+      <p>Final renders come from Blender Cycles at high sample counts with adaptive sampling. Each deliverable fits its platform: WebP for web, ProRes for video, with full EXR masters archived for re-rendering. A 3D Performance Blueprint accompanies every delivery.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="contact pad" id="contact">
+  <p class="label">Available for commissions</p>
+  <a class="mail" href="mailto:guilhermerafaelmeister2019@gmail.com">guilhermerafaelmeister2019@gmail.com</a>
+  <div class="links">
+    <a href="https://www.instagram.com/guui.rafael.meister/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/guilherme-rafael-585b0026b/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.behance.net/guilhermesouza374" target="_blank" rel="noopener">Behance</a>
+  </div>
+  <div class="base">
+    <span>Guilherme Rafael, 3D Designer & Consultant for Non-Alcoholic Beverages</span>
+    <span>Glory to Jesus.</span>
+  </div>
+</section>
+
+<dialog id="lb" aria-label="Preview">
+  <div class="box"><button type="button">Close</button><div id="lbc"></div></div>
+</dialog>
+
+<script>
+document.querySelectorAll('.media').forEach(m=>{
+  const v=m.querySelector('video'), i=m.querySelector('img'), ph=m.querySelector('.ph');
+  const ok=()=>ph&&ph.remove();
+  if(v){v.addEventListener('loadeddata',ok);v.addEventListener('error',()=>v.remove());}
+  if(i){i.addEventListener('load',ok);i.addEventListener('error',()=>i.remove());if(i.complete&&i.naturalWidth)ok();}
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.play().catch(()=>{})}else{e.target.pause()}
+}),{threshold:.35});
+document.querySelectorAll('.work video').forEach(v=>io.observe(v));
+
+const lb=document.getElementById('lb'),lbc=document.getElementById('lbc');
+function openLB(m){
+  const s=m.dataset.src;
+  lbc.innerHTML=m.dataset.type==='video'
+    ?`<video src="${s}" controls autoplay loop playsinline></video>`
+    :`<img src="${s}" alt="">`;
+  lb.showModal();
+}
+document.querySelectorAll('.media').forEach(m=>{
+  m.addEventListener('click',()=>openLB(m));
+  m.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLB(m)}});
+});
+lb.addEventListener('click',e=>{if(e.target===lb||e.target.tagName==='BUTTON')lb.close()});
+lb.addEventListener('close',()=>{lbc.innerHTML=''});
+</script>
+</body>
+</html>
