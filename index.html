@@ -53,19 +53,17 @@ p{max-width:60ch}
 .top nav{display:flex;gap:clamp(16px,3vw,36px)}
 .top a{text-decoration:none;opacity:.8}
 .top a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
-.hero-grid{display:grid;grid-template-columns:1fr auto;gap:clamp(28px,5vw,80px);align-items:stretch;margin-top:clamp(8px,2vw,24px)}
-.hero-left{display:flex;flex-direction:column;justify-content:space-between;gap:48px;min-width:0}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,64px);margin-top:clamp(8px,2vw,24px)}
+.hero-left{display:grid;grid-template-columns:1.6fr 1fr;gap:32px 64px;align-items:end;min-width:0}
 h1{font-weight:800;font-stretch:114%;font-size:clamp(46px,8.4vw,132px);line-height:.9;letter-spacing:-.035em}
 .hero-copy{max-width:46ch}
 .hero-copy .role{font-family:var(--head);font-size:clamp(18px,1.7vw,22px);font-weight:500;font-stretch:105%;line-height:1.25;margin-bottom:18px}
 .hero-copy p{color:#D4DFEA;font-size:17px}
 .hero-copy .avail{margin-top:26px;font-family:var(--head);font-size:15px;color:var(--ice)}
 .hero-copy .avail a{color:#fff;text-underline-offset:5px}
-.hero-video{height:min(80vh,800px);height:min(80svh,800px);margin-right:calc(var(--pad) * -1)}
+.hero-video{margin-left:calc(var(--pad) * -1);margin-right:calc(var(--pad) * -1);border-radius:0}
 @media(max-width:860px){
-  .hero-grid{grid-template-columns:1fr}
-  .hero-left{gap:32px}
-  .hero-video{height:auto;width:min(100%,420px);margin-right:0}
+  .hero-left{grid-template-columns:1fr}
 }
 
 /* ---------- about ---------- */
@@ -168,10 +166,10 @@ dialog button{position:absolute;top:-40px;right:0;border:0;background:none;color
         <p class="avail">Freelancer. Available for commissions: <a href="mailto:guilhermerafaelmeister2019@gmail.com">send a brief</a></p>
       </div>
     </div>
-    <!-- Hero video: vertical 1080x1920 -->
-    <figure class="media r916 hero-video" data-type="video" data-src="videos/hero.mp4" tabindex="0" role="button" aria-label="Open hero video full size">
-      <div class="ph">videos/hero.mp4<br>1080 x 1920</div>
-      <video src="videos/hero.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <!-- Hero image: 1920x1080 (swap back to the vertical video later) -->
+    <figure class="media r169 hero-video" data-type="image" data-src="works/hero.png" tabindex="0" role="button" aria-label="Open hero image full size">
+      <div class="ph">works/hero.png<br>1920 x 1080</div>
+      <img src="works/hero.png" alt="Guilherme Rafael, 3D beverage render" fetchpriority="high">
     </figure>
   </div>
 </section>
